@@ -1,0 +1,27 @@
+{
+  "name": "sending-contact-form-with-gmail-api",
+  "version": "1.0.0",
+  "description": "A sample application for Sending Contact Form with Gmail API",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adriancleung/blog.adrianleung.dev.git",
+    "directory": "samples/sending-contact-forms-with-gmail-api"
+  },
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Adrian Leung",
+    "email": "contact@adrianleung.dev",
+    "url": "https://blog.adrianleung.dev/sending-contact-forms-with-gmail-api"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "googleapis": "^59.0.0",
+    "morgan": "^1.10.0"
+  }
+}

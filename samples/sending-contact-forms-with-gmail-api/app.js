@@ -37,7 +37,6 @@ const util = require('util');
 const readline = require('readline');
 const { google } = require('googleapis');
 const express = require('express');
-const morgan = require('morgan');
 const cors = require('cors');
 
 // Creates an Express application
@@ -178,8 +177,6 @@ function encode(unencoded) {
     return encoded.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '');
 };
 
-// Middleware used for logging
-app.use(morgan('combined'));
 // Middleware used to parse x-www-form-urlencoded request bodies
 app.use(express.urlencoded({ extended: true }));
 
@@ -208,8 +205,11 @@ app.post('/send', cors(corsOptions), (req, res) => {
     // sendMail callback function as a parameter
     readFileContent(CREDENTIALS_PATH)
         .then(async buff => {
-            var statusCode = await authorize(JSON.parse(buff), sendMail);
-            res.status(statusCode).send();
+            await authorize(JSON.parse(buff), sendMail)
+            .then(statusCode => {
+                if (statusCode === SUCCESS) res.status(SUCCESS).send();
+                else res.status(INTERNAL_SERVER_ERROR).send();
+            });
         })
         .catch(err => {
             console.error('Error loading client secret file: ', err);
