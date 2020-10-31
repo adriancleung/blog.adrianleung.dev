@@ -1,0 +1,9 @@
+version: '3'
+services:
+  app:
+    volumes:
+      # Mounts your project directory in the /data directory of your container
+      - .:/data:cached
+      - /var/run/docker.sock:/var/run/docker.sock 
+    # Override the default CMD to prevent the application from running
+    command: tail -f /dev/null

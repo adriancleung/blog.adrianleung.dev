@@ -1,0 +1,16 @@
+# Version number for Docker compatibility
+version: "3"
+# Place all your services under `services`
+services:
+  # Name you service
+  app:
+    # Finds the Dockerfile in this location (current directory) to build
+    build: .
+    # Set environment variables to pass to container
+    environment:
+      # For express app
+      PORT: 3000
+    # Map the container port to the host port
+    # <host>:<container>
+    ports:
+      - "3000:3000"
