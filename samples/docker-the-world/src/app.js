@@ -1,5 +1,5 @@
 /**
- * app.js
+ * sample/docker-the-world/app.js
  * 
  * @license
  * Copyright (c) 2020 Adrian Leung
